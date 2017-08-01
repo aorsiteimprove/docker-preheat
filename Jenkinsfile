@@ -1,18 +1,12 @@
-// archive artifact?
-
 pipeline {
 	agent {
-		label "ubuntu16"
+		label "docker-preheat"
 	}
+	// deleteDir()
 	stages {
-		stage('build') {
+		stage('preheat') {
 			steps {
-	 			sh './mvnw clean package'
-			}
-		}
-		stage('test') {
-			steps {
-	 			sh './mvnw clean test'
+	 			sh 'docker build -t "apachee:1.0.0" .'
 			}
 		}
 	}
