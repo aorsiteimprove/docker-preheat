@@ -1,12 +1,12 @@
 pipeline {
 	agent {
-		label "docker-preheat"
+		label "master"
 	}
 	// deleteDir()
 	stages {
 		stage('preheat') {
 			steps {
-	 			sh 'docker build -t "apachee:1.0.0" .'
+	 			sh 'curl -d "script=./getDockerJobs.groovy" https://ci.siteimprove.systems/script'
 			}
 		}
 	}
